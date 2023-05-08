@@ -1,6 +1,5 @@
-CREATE TABLE "public.user" (
+CREATE TABLE "user" (
 	"id" serial NOT NULL,
-	"password" integer NOT NULL,
 	"is_employee" BOOLEAN NOT NULL,
 	"name" varchar NOT NULL,
 	"pet_type" varchar NOT NULL,
@@ -14,7 +13,7 @@ CREATE TABLE "public.user" (
 
 
 
-CREATE TABLE "private.auth" (
+CREATE TABLE "auth" (
 	"id" serial NOT NULL,
 	"user_id" integer NOT NULL,
 	"password_hash" varchar NOT NULL,
@@ -25,7 +24,7 @@ CREATE TABLE "private.auth" (
 
 
 
-CREATE TABLE "public.employees" (
+CREATE TABLE "employees" (
 	"id" serial NOT NULL,
 	"user_id" integer NOT NULL,
 	"dept_code" integer NOT NULL,
@@ -38,7 +37,7 @@ CREATE TABLE "public.employees" (
 
 
 
-CREATE TABLE "public.department" (
+CREATE TABLE "department" (
 	"id" serial NOT NULL,
 	"name" varchar NOT NULL,
 	"location" TEXT NOT NULL,
@@ -49,7 +48,7 @@ CREATE TABLE "public.department" (
 
 
 
-CREATE TABLE "public.order" (
+CREATE TABLE "order" (
 	"id" serial NOT NULL,
 	"user_id" integer NOT NULL,
 	"choice_id" integer NOT NULL,
@@ -60,7 +59,7 @@ CREATE TABLE "public.order" (
 
 
 
-CREATE TABLE "public.cats" (
+CREATE TABLE "cats" (
 	"id" serial NOT NULL,
 	"breed" varchar NOT NULL,
 	"hair-length" varchar NOT NULL,
@@ -72,7 +71,7 @@ CREATE TABLE "public.cats" (
 
 
 
-CREATE TABLE "public.choice" (
+CREATE TABLE "choice" (
 	"id" serial NOT NULL,
 	"cat_id" integer NOT NULL,
 	"dog_id" integer NOT NULL,
@@ -83,7 +82,7 @@ CREATE TABLE "public.choice" (
 
 
 
-CREATE TABLE "public.dogs" (
+CREATE TABLE "dogs" (
 	"id" serial NOT NULL,
 	"size" varchar NOT NULL,
 	"breed" varchar NOT NULL,
@@ -95,7 +94,6 @@ CREATE TABLE "public.dogs" (
 
 
 
-ALTER TABLE "user" ADD CONSTRAINT "user_fk0" FOREIGN KEY ("password") REFERENCES "auth"("password_hash");
 
 ALTER TABLE "auth" ADD CONSTRAINT "auth_fk0" FOREIGN KEY ("user_id") REFERENCES "user"("id");
 
